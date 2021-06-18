@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {environment} from "@environments";
 
 @Injectable()
@@ -13,6 +13,6 @@ export class AuthService {
   }
 
   logout() {
-    return this.httpClient.post(`http://localhost:8080/logout`, {});
+    return this.httpClient.post<HttpResponse<any>>(`http://localhost:8080/logout`, null, {observe: 'response'});
   }
 }

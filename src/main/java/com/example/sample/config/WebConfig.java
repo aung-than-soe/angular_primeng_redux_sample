@@ -11,11 +11,11 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**", "**.js", "**.css", "**.ttf", "*.woff")
+        registry.addResourceHandler("/resources/**", "**.js", "**.css", "**.ttf", "**.woff", "*.*")
                 .addResourceLocations("classpath:/static/")
                 .setCacheControl(CacheControl.noCache())
                 .setCachePeriod(60 * 60)
-                .resourceChain(true)
+                .resourceChain(false)
                 .addResolver(new EncodedResourceResolver());
     }
 }

@@ -26,12 +26,10 @@ export function logout(reducer: ActionReducer<AppState>): ActionReducer<AppState
   };
 }
 
-// step 2: wrap localStorageSync in an exported function
 function synchronizer(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
   return localStorageSync({
     keys: [
       { auth: ['isAuthenticated']},
-      { employee: ['employee']}
     ],
     rehydrate: true,
     removeOnUndefined: true,
@@ -39,4 +37,4 @@ function synchronizer(reducer: ActionReducer<AppState>): ActionReducer<AppState>
   })(reducer);
 }
 
-export const metaReducers: MetaReducer<AppState>[] = environment.production ? [logout, synchronizer] : [];
+export const metaReducers: MetaReducer<AppState>[] = environment.production ? [logout, synchronizer] : [logout, synchronizer];

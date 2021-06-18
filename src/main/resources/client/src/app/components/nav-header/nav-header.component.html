@@ -2,7 +2,7 @@
   <div class="p-fluid p-jc-between header__wrapper" [ngStyle]="{backgroundColor: 'var(--indigo-50)'}">
     <div class="p-col p-d-none p-d-sm-inline-flex p-jc-between p-mx-2">
       <a routerLink="/employee" class="logo">
-        <img src="assets/images/primeng-logo-dark.svg" alt="prime logo">
+        <img [src]="logoUrl" alt="prime logo">
         </a>
         <p-button label="Logout" icon="pi pi-sign-out" iconPos="right" class="p-mt-2 sign__out" (click)="logout()"></p-button>
     </div>

@@ -3,6 +3,7 @@ package com.example.sample.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -15,6 +16,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import javax.servlet.http.HttpServletResponse;
 import java.time.Duration;
 import java.util.List;
 
@@ -42,12 +44,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic()
                 .and()
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
-                .clearAuthentication(true)
-                .deleteCookies("JSESSIONID")
-                .and()
+                .logout(logout -> logout.permitAll()
+                        .deleteCookies("JSESSIONID")
+                        .clearAuthentication(true)
+                        .logoutSuccessHandler((req, res, ex) -> res.setStatus(HttpServletResponse.SC_OK)))
                 // this disables session creation on Spring Security
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
         .and().headers().cacheControl().disable();

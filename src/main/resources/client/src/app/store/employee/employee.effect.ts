@@ -14,7 +14,6 @@ export class EmployeeEffect {
   onLoadEmployee$ = createEffect(() => this.actions.pipe(
     ofType(EmployeeActions.loadAlEmployee.type),
     mergeMap(_ => {
-      console.log('#### loading employee')
       return this.employeeService.allEmployee.pipe(
         map(emp => EmployeeActions.loadEmployeeSuccess({employee: emp})),
         catchError(err => throwError(err))

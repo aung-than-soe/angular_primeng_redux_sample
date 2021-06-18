@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,18 +39,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @PostConstruct
     public void init() {
-        Employee e1 = new Employee();
-        e1.setName("Aung Aung");
-        e1.setAddress("Hlaing Township, Yangon");
-        e1.setPhone("+95943884332");
-        e1.setDepartment(Department.SOFTWARE);
-
-        Employee e2 = new Employee();
-        e2.setName("Thuzar");
-        e2.setAddress("Baham Township, Yangon");
-        e2.setPhone("+95943884332");
-        e2.setDepartment(Department.SALE);
-
-        this.employeeRepository.saveAll(List.of(e1, e2));
+        List<Employee> employees = new ArrayList<>(21);
+        for (int i = 0; i < 20; i++) {
+            Employee e = new Employee();
+            String name = i% 2 == 0 ? "Kaung Kaung" : "Maung Maung";
+            e.setName(String.format("%s - %d", name, i));
+            String address = i % 3 == 0 ? "Hlaing" : i%4 == 0 ? "Baham" : "Tamwe";
+            e.setAddress(String.format("%s Township, Yangon", address));
+            e.setPhone(String.format("+959442%d8%d21%d", i, i, i));
+            e.setDepartment(i%2 == 0 ? Department.SALE : Department.SOFTWARE);
+            employees.add(e);
+        }
+        this.employeeRepository.saveAll(employees);
     }
 }
