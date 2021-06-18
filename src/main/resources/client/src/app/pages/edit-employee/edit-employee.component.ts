@@ -39,7 +39,6 @@ export class EditEmployeeComponent implements OnInit {
       tap(id => {this.currentEmployeeId = id}),
       switchMap(id => this.store.select(findOne(id)).pipe(
           filter(employee => employee != null),
-          tap(console.log)
         )
       )
     ).subscribe(emp => {
