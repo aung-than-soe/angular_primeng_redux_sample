@@ -1,0 +1,40 @@
+:host {
+
+  width: 100%;
+
+  .header {
+    &__container {
+      display: block;
+    }
+
+    &__wrapper {
+      display: flex;
+      padding: 5px;
+    }
+  }
+
+  .logo {
+    height: 35px;
+    >img {
+      z-index: 1;
+    }
+  }
+}
+::ng-deep .sign__out {
+
+  > button.p-button {
+    background-color: transparent;
+    color: #090909;
+    border: none;
+    border-radius: 0;
+
+    &:enabled:hover, &:enabled:active {
+      border-color: transparent;
+      background: transparent;
+      color: #030303;
+    }
+    &:focus {
+      box-shadow: unset;
+    }
+  }
+}

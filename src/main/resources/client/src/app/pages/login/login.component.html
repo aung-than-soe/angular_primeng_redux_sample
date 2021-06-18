@@ -1,0 +1,38 @@
+<div class="container p-mt-6">
+  <form [formGroup]="loginForm" class="p-shadow-4 p-col-4 login__form" [ngStyle]="{backgroundColor: 'var(--indigo-50)'}" novalidate (ngSubmit)="onSubmit()">
+    <div class="p-fluid p-p-6">
+      <h3 class="p-text-center p-text-bold p-mb-6">Login Form</h3>
+      <div class="p-field p-mb-5">
+        <span class="p-float-label p-input-icon-left">
+          <i class="pi pi-user"></i>
+          <input type="text"
+          id="username"
+          pTooltip="Please enter username"
+          formControlName="username"
+          name="username"
+          class="p-py-2 float-input-invalid"
+          [ngClass]="{'ng-invalid ng-dirty': (submitted && username.invalid) || (username.invalid && (username.dirty || username.touched))}"
+          pInputText required
+          [placeholder]="!((submitted && username.invalid) || (username.invalid && (username.dirty || username.touched))) ? 'username' : ''"/>
+          <label for="float-input-invalid" *ngIf="(submitted && username.invalid) || (username.invalid && (username.dirty || username.touched))">username is required</label>
+        </span>
+      </div>
+      <div class="p-field">
+        <span class="p-float-label p-input-icon-left">
+          <i class="pi pi-lock"></i>
+          <input type="password"
+          id="password"
+          pTooltip="Please enter password"
+          formControlName="password"
+          name="password"
+          class="p-py-2 float-input-invalid"
+          [ngClass]="{'ng-invalid ng-dirty': (submitted && password.invalid) || (password.invalid && (password.dirty || password.touched))}"
+          pInputText required
+          [placeholder]="!((submitted && password.invalid) || (password.invalid && (password.dirty || password.touched))) ? 'password' : ''"/>
+          <label for="float-input-invalid" *ngIf="(submitted && password.invalid) || (password.invalid && (password.dirty || password.touched))">password is required</label>
+        </span>
+      </div>
+      <button pButton type="submit" class="p-mt-4" label="Login"></button>
+    </div>
+  </form>
+</div>

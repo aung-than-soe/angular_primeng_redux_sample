@@ -1,0 +1,39 @@
+:host {
+  .table {
+    &__container {
+      display: inline-flex;
+      background-color: #dee2e6;
+    }
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  a[pButton] {
+    text-decoration: none;
+  }
+}
+
+::ng-deep {
+  p-paginator {
+
+    .p-paginator {
+
+      padding: 0.25rem 0;
+
+      >.p-paginator-current, >.p-paginator-element, .p-paginator-pages {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+      }
+
+      &.p-component {
+        font-size: 14px;
+        padding: 0.25rem 0;
+        justify-content: space-around;
+      }
+    }
+  }
+}

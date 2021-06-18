@@ -1,0 +1,18 @@
+:host {
+
+  .container {
+    background-color: #dee2e6;
+  }
+
+  .p-card-shadow {
+    box-shadow: 0 7px 30px -10px rgba(150,170,180,0.5);
+    background-color: #cae6fc;
+  }
+}
+
+::ng-deep {
+
+  .p-card-footer {
+    padding: 0 0 1rem 0 !important;
+  }
+}
